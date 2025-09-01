@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+  <form method="get" class="row g-2 mb-3">
+    <div class="col-md-6">{{ form.q }}</div>
+    <div class="col-auto"><button class="btn btn-outline-primary">Buscar</button></div>
+  </form>
+
+  {% for post in posts %}
+    <div class="card mb-3 shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">{{ post.title }}</h5>
+        <p class="card-text">{{ post.content|default:"(sin contenido)" }}</p>
+        <span class="badge bg-secondary">{{ post.created_at|date:"d/m/Y H:i" }}</span>
+      </div>
+    </div>
+  {% empty %}
+    <p>No hay artículos aún. ¡Creá el primero haciendo clic en “Nuevo artículo”!</p>
+  {% endfor %}
+{% endblock %}
