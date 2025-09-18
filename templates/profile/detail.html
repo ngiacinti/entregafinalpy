@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Mi perfil{% endblock %}
+{% block content %}
+<h1 class="h3">Mi perfil</h1>
+<div class="d-flex align-items-center gap-3">
+{% if profile.avatar %}
+<img src="{{ profile.avatar.url }}" alt="avatar" width="96" height="96" class="rounded-circle border">
+{% else %}
+<div class="rounded-circle bg-secondary" style="width:96px;height:96px;"></div>
+{% endif %}
+<div>
+<p class="mb-1"><strong>Usuario:</strong> {{ profile.user.username }}</p>
+<p class="mb-1"><strong>Email:</strong> {{ profile.user.email }}</p>
+<p><strong>Bio:</strong> {{ profile.bio|default:'(vacío)' }}</p>
+<a class="btn btn-outline-primary" href="/profile/edit/">Editar perfil</a>
+</div>
+</div>
+{% endblock %}
